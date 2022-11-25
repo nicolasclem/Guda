@@ -9,6 +9,9 @@ namespace Guda.GudaMapper
         public GudaMapper()
         {
             CreateMap<Categoria, CategoriaDTO>().ReverseMap();
+            CreateMap<Articulo, ArticuloDTO>().ReverseMap();
+            CreateMap<Articulo, ArticuloCreateDTO>().ReverseMap();
+            CreateMap<Articulo, ArticuloUpDateDTO>().ReverseMap();
         }
     }
 }

@@ -62,9 +62,9 @@ namespace Guda.Repository
 
         public ICollection<Articulo> GetArticuloEnCategoria(int catId)
         {
-            return _db.Articulos.Include(ca => ca.Categoria).Where(c => c.Id == catId).ToList();
+            return _db.Articulos.Include(ca => ca.Categoria).Where(c => c.categoriaId == catId).ToList();
         }
-
+        
         public ICollection<Articulo> GetArticulos()
         {
             return _db.Articulos.OrderBy(c=>c.Nombre).ToList();
