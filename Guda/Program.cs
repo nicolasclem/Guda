@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("SQL")));
 
 builder.Services.AddScoped<ICateogriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
 builder.Services.AddAutoMapper(typeof(GudaMapper));
 
 builder.Services.AddControllers();
