@@ -9,10 +9,9 @@ namespace Guda.Models.DTOs
         [Required(ErrorMessage ="El nombre  es obligatorio")]
 
         public string Nombre { get; set; }
-      
-        public string Descripcion { get; set; }
 
         public string RutaImagen { get; set; }
+        public string Descripcion { get; set; }
         public string Duracion { get; set; }
         public TipoClasificacion Clasificacion { get; set; }
 

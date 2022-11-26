@@ -130,8 +130,8 @@ namespace Guda.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error  recuperando datos de la aplicacion");
             }
         }
-        [HttpPatch]
-        public IActionResult EditarArticulo(int id, [FromBody] ArticuloDTO articuloDTO)
+        [HttpPatch("{id:int}")]
+        public IActionResult EditarArticulo(int id, [FromBody] ArticuloUpDateDTO articuloDTO)
         {
             if (articuloDTO == null || id != articuloDTO.Id)
             {
