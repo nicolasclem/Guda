@@ -12,6 +12,9 @@ namespace Guda.GudaMapper
             CreateMap<Articulo, ArticuloDTO>().ReverseMap();
             CreateMap<Articulo, ArticuloCreateDTO>().ReverseMap();
             CreateMap<Articulo, ArticuloUpDateDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioAuthDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioAuthLoginDTO>().ReverseMap();
         }
     }
 }
