@@ -2,12 +2,14 @@
 using Guda.Models;
 using Guda.Models.DTOs;
 using Guda.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Guda.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ArticulosController : ControllerBase
@@ -22,7 +24,7 @@ namespace Guda.Controllers
             this.mapper = mapper;
             this.hostingEnvironment = hostingEnvironment;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetArticulos()
         {
@@ -37,6 +39,7 @@ namespace Guda.Controllers
             }
             return Ok(listaArticulosDTO);
         }
+        [AllowAnonymous]
         [HttpGet("{id:int}", Name = "GetArticulo")]
         public IActionResult GetArticulo(int id)
         {
@@ -94,7 +97,7 @@ namespace Guda.Controllers
             return CreatedAtRoute("GetArticulo", new { id = articulo.Id }, articulo);
         }
 
-
+        [AllowAnonymous]
         [HttpGet("GetArticuloEnCategoria/{id:int}")]
         public IActionResult GetArticuloEnCategoria(int id)
         {
@@ -111,7 +114,7 @@ namespace Guda.Controllers
             }
              return Ok(itemArticulo);
         }
-
+        [AllowAnonymous]
         [HttpGet("Buscar")]
         public IActionResult Buscar(string nombre)
         {

@@ -2,6 +2,7 @@
 using Guda.Models;
 using Guda.Models.DTOs;
 using Guda.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -11,6 +12,7 @@ using System.Text;
 
 namespace Guda.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase
@@ -54,6 +56,7 @@ namespace Guda.Controllers
 
             return Ok(itemUsuarioDTO);
         }
+        [AllowAnonymous]
         [HttpPost("Registro")]
         public IActionResult Registro(UsuarioAuthDTO usuarioAuthDTO)
         {
@@ -75,9 +78,11 @@ namespace Guda.Controllers
 
 
         }
+         [AllowAnonymous]
         [HttpPost("Login")]
         public IActionResult Login(UsuarioAuthLoginDTO usuarioAuthLoginDTO)
         {
+            
             var usuarioDesdeRepo =  userRepo.Login(usuarioAuthLoginDTO.Usuario, usuarioAuthLoginDTO.Password);
             if (usuarioDesdeRepo == null)
             {

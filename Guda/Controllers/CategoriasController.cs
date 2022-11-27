@@ -2,11 +2,13 @@
 using Guda.Models;
 using Guda.Models.DTOs;
 using Guda.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Guda.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
@@ -19,7 +21,7 @@ namespace Guda.Controllers
             this.catRepo = catRepo;
             this.mapper = mapper;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetCateogrias()
         {
@@ -34,6 +36,7 @@ namespace Guda.Controllers
             
             return Ok(listaCategoriaDTO);
         }
+        [AllowAnonymous]
         [HttpGet("{id:int}", Name ="GetCategoria")]
         public IActionResult GetCategoria(int id)
         {
